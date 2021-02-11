@@ -1,13 +1,18 @@
-import React, { useState } from "react";
-export const Timer = (props) => {
-	const [count, setCount] = useState(props.timeInit);
+import React from "react";
+export const Timer = ({ setCount, count, label }) => {
 	return (
 		<>
-			<button onClick={() => setCount((currentCount) => currentCount - 1)}>
+			<button
+				id={label + "-decrement"}
+				onClick={() => (count > 1 ? setCount(count - 1) : setCount(1))}
+			>
 				-
 			</button>
-			{count}
-			<button onClick={() => setCount((currentCount) => currentCount + 1)}>
+
+			<button
+				id={label + "-increment"}
+				onClick={() => (count >= 60 ? setCount(60) : setCount(count + 1))}
+			>
 				+
 			</button>
 		</>
