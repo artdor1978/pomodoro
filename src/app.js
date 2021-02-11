@@ -1,28 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-
-const timer = (time) => {
-	const [count, setCount] = useState(time);
-	return (
-		<div>
-			<button onClick={() => setCount((currentCount) => currentCount - 1)}>
-				-
-			</button>
-			{count}
-			<button onClick={() => setCount((currentCount) => currentCount + 1)}>
-				+
-			</button>
-		</div>
-	);
-};
-
+import { Timer } from "./timer.js";
+import "./app.css";
 const App = () => {
+	const time = { work: 25, relax: 5 };
 	return (
-		<div>
-		<h3>Work!</h3>
-			{timer(25)}
-			<h3>Relax!</h3>
-			{timer(5)}
+		<div className="session">
+			<h3 id="session-label">Work!</h3>
+			<Timer timeInit={time.work} />
+			<h3 id="break-label">Relax!</h3>
+			<Timer timeInit={time.relax} />
 		</div>
 	);
 };
