@@ -6,8 +6,18 @@ const App = () => {
 	const [work, setWork] = useState(25);
 	const [relax, setRelax] = useState(5);
 	const [timeLeft, setTime] = useState(work + ":00");
-	let seconds = 60;
-	const y = work - 1;
+	const countDown = () => {
+		let seconds = 60;
+		const y = work - 1;
+		setInterval(() => {
+			seconds--;
+			if (seconds < 0) {
+				return;
+			}
+			setTime(work - 1 + ":" + seconds);
+			countDown;
+		}, 1000);
+	};
 
 	return (
 		<>
@@ -18,13 +28,7 @@ const App = () => {
 			<div className="process">
 				<div id="timer-label">Session</div>
 				<div id="time-left">{timeLeft}</div>
-				<button
-					id="start_stop"
-					onClick={(function timerCountDown() {
-						console.log("ddd", seconds);
-						if (seconds-- > 0) setTimeout(timerCountDown, 1000);
-					})()}
-				>
+				<button id="start_stop" onClick={countDown}>
 					start_stop
 				</button>
 				<button
