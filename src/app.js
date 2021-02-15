@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./app.css";
 import Init from "./init.js";
@@ -9,17 +9,36 @@ const App = () => {
 	const [textButton, setText] = useState("Start");
 	const countDown = () => {
 		setText("Stop");
-		let seconds = 60;
-		const y = work - 1;
-		setInterval(() => {
-			seconds--;
-			if (seconds < 0) {
-				return;
-			}
-			setTime(work - 1 + ":" + seconds);
-			countDown;
-		}, 1000);
+
+		let minutes = work;
+
+		const countDownMinutes = (minutes) => {
+			let seconds = 60;
+			const tick = () => {
+				let currentMinutes = minutes - 1;
+				seconds--;
+				setTime(
+					(currentMinutes < 10 ? "0" : "") +
+						String(currentMinutes) +
+						":" +
+						(seconds < 10 ? "0" : "") +
+						String(seconds)
+				);
+				if (seconds > 0) {
+					setTimeout(tick, 1000);
+				} else {
+					if (minutes > 1) {
+						setTimeout(countDownMinutes(minutes - 1), 1000);
+					}
+				}
+			};
+			tick();
+		};
+		countDownMinutes(minutes);
 	};
+	useEffect(() => {
+		setTime(work + ":00");
+	}, [work]);
 
 	return (
 		<>
@@ -38,7 +57,7 @@ const App = () => {
 					onClick={() => {
 						setWork(25);
 						setRelax(5);
-						clearInterval(countDown);
+						clearTimeout();
 						setTime(work + ":00");
 						setText("Start");
 					}}
