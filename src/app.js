@@ -7,11 +7,12 @@ const App = () => {
 	const [relax, setRelax] = useState(5);
 	const [timeLeft, setTime] = useState(work + ":00");
 	const [textButton, setText] = useState("Start");
+	const [reset, setReset] = useState(true);
+	console.log("1",reset);
+	let timeoutHandle;
 	const countDown = () => {
 		setText("Stop");
-
 		let minutes = work;
-
 		const countDownMinutes = (minutes) => {
 			let seconds = 60;
 			const tick = () => {
@@ -24,12 +25,20 @@ const App = () => {
 						(seconds < 10 ? "0" : "") +
 						String(seconds)
 				);
-				if (seconds > 0) {
-					setTimeout(tick, 1000);
-				} else {
-					if (minutes > 1) {
-						setTimeout(countDownMinutes(minutes - 1), 1000);
+				if (reset) {
+					if (seconds > 0) {
+						timeoutHandle = setTimeout(tick, 1000);
+						console.log("ssss", timeoutHandle);
+					} else {
+						if (minutes > 1) {
+							timeoutHandle = setTimeout(function () {
+								countDownMinutes(minutes - 1);
+							}, 1000);
+							console.log("ccccc", timeoutHandle);
+						}
 					}
+				} else {
+					clearTimeout(timeoutHandle);
 				}
 			};
 			tick();
@@ -39,7 +48,6 @@ const App = () => {
 	useEffect(() => {
 		setTime(work + ":00");
 	}, [work]);
-
 	return (
 		<>
 			<div className="init">
@@ -57,8 +65,9 @@ const App = () => {
 					onClick={() => {
 						setWork(25);
 						setRelax(5);
-						clearTimeout();
-						setTime(work + ":00");
+						setReset(false);
+						console.log("2",reset);
+						//setTime(work + ":00");
 						setText("Start");
 					}}
 				>
