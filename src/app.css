@@ -1,3 +1,7 @@
+body{
+	font-family: 'Fira Mono', monospace;
+	color:#4787ff;
+}
 .init {
 	position: absolute;
 	left: 50%;
@@ -12,3 +16,16 @@
 	transform: translate(-50%, -50%);
 	padding: 30px;
 }
+button {
+  background-color:#FF6347;
+  border-radius: 35%;
+  color: #47ffbf;
+  border: none;
+  padding: 0.3em 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8em;
+  outline: none;
+  margin: 0 0.3em;
+  }
