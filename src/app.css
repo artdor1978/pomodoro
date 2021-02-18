@@ -1,6 +1,8 @@
-body{
-	font-family: 'Fira Mono', monospace;
-	color:#4787ff;
+body {
+	font-family: "Fira Mono", monospace;
+	color: #009CB8;
+	background-color: #FFEFED;
+	font-weight: bold;
 }
 .init {
 	position: absolute;
@@ -17,15 +19,19 @@ body{
 	padding: 30px;
 }
 button {
-  background-color:#FF6347;
-  border-radius: 35%;
-  color: #47ffbf;
-  border: none;
-  padding: 0.3em 2em;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 0.8em;
-  outline: none;
-  margin: 0 0.3em;
-  }
+	background-color: #ff6347 ;
+	border-radius: 6em;
+	color: #47FF63;
+	border: none;
+	padding: 0.3em 2em;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 0.8em;
+	outline: none;
+	margin: 0 0.3em;
+	font-weight: bold;
+	line-height: 1.5em;
+	position: relative;
+	white-space: nowrap;
+}
