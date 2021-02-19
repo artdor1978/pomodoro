@@ -19,20 +19,21 @@ function App() {
 	}
 
 	function reset() {
-		setSeconds(work * 60);
+		//setSeconds(work * 60);
 		setIsActive(false);
 		setWork(25);
 		setRelax(5);
-		setTime(work + ":00");
+		//setTime(work + ":00");
 	}
 
 	useEffect(() => {
 		let interval = null;
-		if (isActive && seconds >= 0) {
+		let minutes, countSec;
+		if (isActive && seconds > 0) {
 			interval = setInterval(() => {
 				setSeconds((seconds) => seconds - 1);
-				let minutes = Math.floor(seconds / 60);
-				let countSec = Math.round((seconds / 60 - minutes) * 60);
+				minutes = Math.floor((seconds - 1) / 60);
+				countSec = Math.round(((seconds - 1) / 60 - minutes) * 60);
 				setTime(
 					(minutes < 10 ? "0" : "") +
 						minutes +
@@ -40,7 +41,7 @@ function App() {
 						(countSec < 10 ? "0" : "") +
 						countSec
 				);
-			}, 100);
+			}, 1000);
 		} else if (!isActive && seconds < 0) {
 			clearInterval(interval);
 		}
