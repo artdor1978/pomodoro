@@ -8,10 +8,11 @@ function App() {
 	const [seconds, setSeconds] = useState(work * 60);
 	const [isActive, setIsActive] = useState(false);
 	const [timeLeft, setTime] = useState(work + ":00");
-
+	const [timerLabel, setLabel] = useState("Session");
 	useEffect(() => {
 		setTime(work + ":00");
 		setSeconds(work * 60);
+		setLabel("Session");
 	}, [work]);
 
 	function toggle() {
@@ -19,11 +20,9 @@ function App() {
 	}
 
 	function reset() {
-		//setSeconds(work * 60);
 		setIsActive(false);
 		setWork(25);
 		setRelax(5);
-		//setTime(work + ":00");
 	}
 
 	useEffect(() => {
@@ -42,6 +41,9 @@ function App() {
 						countSec
 				);
 			}, 1000);
+			/*} else if (isActive && seconds == 0) {
+			setSeconds(relax * 60);
+			setLabel("Break");*/
 		} else if (!isActive && seconds < 0) {
 			clearInterval(interval);
 		}
@@ -67,7 +69,7 @@ function App() {
 				/>
 			</div>
 			<div className="process">
-				<div id="timer-label">Session</div>
+				<div id="timer-label">{timerLabel}</div>
 				<div id="time-left">{timeLeft}</div>
 				<button id="start_stop" onClick={toggle}>
 					{isActive ? "Pause" : "Start"}
