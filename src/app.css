@@ -14,9 +14,10 @@ body {
 .process {
 	position: absolute;
 	left: 50%;
-	top: 45%;
+	top: 57%;
 	transform: translate(-50%, -50%);
 	padding: 30px;
+	margin: 0.3em 0.3em;
 }
 button {
 	background-color: #ff6347 ;
@@ -34,4 +35,8 @@ button {
 	line-height: 1.5em;
 	position: relative;
 	white-space: nowrap;
+}
+.init button {
+	border-radius: 50%;
+	padding: 1em 1em;
 }

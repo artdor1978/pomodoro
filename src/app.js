@@ -12,7 +12,7 @@ function App() {
 	useEffect(() => {
 		setTime(work + ":00");
 		setSeconds(work * 60);
-		setLabel("Session");
+		
 	}, [work]);
 
 	function toggle() {
@@ -23,6 +23,8 @@ function App() {
 		setIsActive(false);
 		setWork(25);
 		setRelax(5);
+		setLabel("Session");
+		setTime(work + ":00");
 	}
 
 	useEffect(() => {
