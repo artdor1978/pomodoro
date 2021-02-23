@@ -12,8 +12,7 @@ function App() {
 	useEffect(() => {
 		setTime(work + ":00");
 		setSeconds(work * 60);
-		
-	}, [work]);
+	}, [work, relax]);
 
 	function toggle() {
 		setIsActive(!isActive);
@@ -43,14 +42,19 @@ function App() {
 						countSec
 				);
 			}, 1000);
-			/*} else if (isActive && seconds == 0) {
-			setSeconds(relax * 60);
-			setLabel("Break");*/
+		} else if (isActive && seconds == 0) {
+			timerLabel == "Session" ? setLabel("Break") : setLabel("Session");
+			timerLabel == "Session"
+				? setSeconds(relax * 60)
+				: setSeconds(work * 60);
+			/*timerLabel == "Session"
+				? setTime(relax + ":00")
+				: setTime(work + ":00");*/
 		} else if (!isActive && seconds < 0) {
 			clearInterval(interval);
 		}
 		return () => clearInterval(interval);
-	}, [isActive, seconds]);
+	}, [isActive, seconds, relax, timerLabel, work]);
 
 	return (
 		<>
