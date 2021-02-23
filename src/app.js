@@ -23,7 +23,7 @@ function App() {
 		setWork(25);
 		setRelax(5);
 		setLabel("Session");
-		setTime(work + ":00");
+		setTime(25 + ":00");
 	}
 
 	useEffect(() => {
