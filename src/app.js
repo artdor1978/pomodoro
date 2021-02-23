@@ -45,8 +45,8 @@ function App() {
 		} else if (isActive && seconds == 0) {
 			timerLabel == "Session" ? setLabel("Break") : setLabel("Session");
 			timerLabel == "Session"
-				? setSeconds(relax * 60)
-				: setSeconds(work * 60);
+				? setSeconds(relax * 60 + 1)
+				: setSeconds(work * 60 + 1);
 			/*timerLabel == "Session"
 				? setTime(relax + ":00")
 				: setTime(work + ":00");*/
